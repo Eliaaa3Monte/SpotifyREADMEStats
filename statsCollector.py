@@ -4,7 +4,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import os, json
 
 
-def setup_spotify_client():
+def setup_spotify_client() -> spotipy.Spotify:
     SPOTIPY_CLIENT_ID = os.environ.get("SPOTIPY_CLIENT_ID")
     SPOTIPY_CLIENT_SECRET = os.environ.get("SPOTIPY_CLIENT_SECRET")
     SPOTIPY_REDIRECT_URI = os.environ.get("SPOTIPY_REDIRECT_URI")
@@ -22,7 +22,7 @@ def setup_spotify_client():
     return sp
 
 
-def get_user_top_artists(sp: spotipy.Spotify):
+def get_user_top_artists(sp: spotipy.Spotify) -> dict:
     # Get User's Top Artists names and pictures, both for short term and long term listening activities
     topArtistsData = {}
     print("|====== To Artists ======|")
@@ -50,7 +50,7 @@ def get_user_top_artists(sp: spotipy.Spotify):
     return topArtistsData
 
 
-def get_user_top_songs(sp: spotipy.Spotify):
+def get_user_top_songs(sp: spotipy.Spotify) -> dict:
     # Get User's Top Songs names, artists names and pictures, both for short term and long term listening activities
     topSongsData = {}
     print("|====== Top Songs ======|")
@@ -77,7 +77,7 @@ def get_user_top_songs(sp: spotipy.Spotify):
     return topSongsData
 
 
-def get_user_last_listenedTo_albums(sp: spotipy.Spotify):
+def get_user_last_listenedTo_albums(sp: spotipy.Spotify) -> dict:
     # Get User's Last Saved Albums names and artists names
     lastSavedAlbumsData = {}
     print("|====== Last Saved Albums ======|")
@@ -94,6 +94,9 @@ def get_user_last_listenedTo_albums(sp: spotipy.Spotify):
 
 
 def get_user_data(sp: spotipy.Spotify):
+    # Collect all user data and store it in a dictionnary to create a JSON file later
+    userDataJson = {}
+
     artistsData = get_user_top_artists(sp)
     userDataJson["top_artists"] = artistsData
 
@@ -102,12 +105,18 @@ def get_user_data(sp: spotipy.Spotify):
 
     lastAlbums = get_user_last_listenedTo_albums(sp)
     userDataJson["last_albums"] = lastAlbums
+    return userDataJson
+
+
+def main():
+    # Setup Spotify Client, collect all relevent info and return a JSON output
+    spClient = setup_spotify_client()
+
+    data = get_user_data(spClient)
+    json_data = json.dumps(data)
+    print(json_data)
+    return json_data
 
 
 if __name__ == "__main__":
-    spClient = setup_spotify_client()
-
-    userDataJson = {}
-    get_user_data(spClient)
-    json_data = json.dumps(userDataJson, indent=4)
-    print(json_data)
+    main()
