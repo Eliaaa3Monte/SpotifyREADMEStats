@@ -5,11 +5,36 @@ import pytest
 import statsCollector
 
 
-def test_import_spotify_client():
+def test_import_spotify_client(mocker, monkeypatch):
+    """Test that the Spotify client can be set up with proper mocking"""
+    # Set fake environment variables
+    monkeypatch.setenv("SPOTIPY_CLIENT_ID", "fake_client_id")
+    monkeypatch.setenv("SPOTIPY_CLIENT_SECRET", "fake_secret")
+    monkeypatch.setenv("SPOTIPY_REDIRECT_URI", "http://localhost:8080")
+    monkeypatch.setenv("SPOTIFY_REFRESH_TOKEN", "fake_refresh_token")
+
+    # Mock the SpotifyOAuth class
+    mock_oauth = mocker.patch("statsCollector.SpotifyOAuth")
+    mock_oauth_instance = mocker.Mock()
+    mock_oauth.return_value = mock_oauth_instance
+
+    # Mock the refresh_access_token method
+    mock_oauth_instance.refresh_access_token.return_value = {
+        "access_token": "fake_access_token",
+        "token_type": "Bearer",
+        "expires_in": 3600,
+    }
+
+    # Mock the Spotify client
+    mock_spotify = mocker.patch("statsCollector.spotipy.Spotify")
+    mock_client = mocker.Mock()
+    mock_spotify.return_value = mock_client
+
+    # Test the function
     spClient = statsCollector.setup_spotify_client()
+
     assert spClient is not None
-    # Check that the client has an expected method
-    assert hasattr(spClient, "current_user")
+    assert spClient == mock_client
 
 
 class TestGetUserTopArtistsExtended:
