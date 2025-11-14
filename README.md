@@ -1,10 +1,12 @@
 # SpotifyStats
 
-![Python](https://img.shields.io/badge/python-3.14+-blue.svg)
-![Flask](https://img.shields.io/badge/flask-3.0.0-green.svg)
-![Spotipy](https://img.shields.io/badge/spotipy-2.23.0-1DB954.svg)
-![Vercel](https://img.shields.io/badge/vercel-deployed-black.svg)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)
+<div align="center">
+  <a href="">![Python](https://img.shields.io/badge/python-3.14-blue.svg)</a>
+  <a href="">![Flask](https://img.shields.io/badge/flask-3.1.0-green.svg)</a>
+  <a href="">![Spotipy](https://img.shields.io/badge/spotipy-2.25.0-1DB954.svg)</a>
+  <a href="">![Vercel](https://img.shields.io/badge/vercel-deployed-black.svg)</a>
+  <a href="">![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)</a>
+</div>
 
 A serverless API that collects your Spotify listening statistics using the spotipy library and makes them available for display in GitHub READMEs or other applications. Built with Python, Flask, and deployed on Vercel.
 
@@ -21,18 +23,18 @@ Create a lightweight, serverless API that:
 
 ## Project Structure
 
-SpotifyStats/
-├── .github/workflows
-│ └── ci.yml # CI/CD pipeline
-├── api/
-│ └── index.py # Flask serverless function for Vercel
-├── tests/
-│ └── test_Collector.py # Pytest test suite
-├── statsCollector.py # Core stats collection logic
-├── getRefreshToken.py # Helper script to obtain Spotify refresh token
-├── requirements.txt # Python dependencies
-├── vercel.json # Vercel configuration
-└── README.md # This file
+SpotifyStats/ <br>
+├── .github/workflows <br>
+│ └── ci.yml # CI/CD pipeline <br>
+├── api/ <br>
+│ └── index.py # Flask serverless function for Vercel <br>
+├── tests/ <br>
+│ └── test_Collector.py # Pytest test suite <br>
+├── statsCollector.py # Core stats collection logic <br>
+├── getRefreshToken.py # Helper script to obtain Spotify refresh token <br>
+├── requirements.txt # Python dependencies <br>
+├── vercel.json # Vercel configuration <br>
+└── README.md # This file <br>
 
 ## Features
 
