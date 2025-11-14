@@ -97,7 +97,7 @@ def get_user_last_listenedTo_albums(sp: spotipy.Spotify) -> dict:
     return lastSavedAlbumsData
 
 
-def get_user_data(sp: spotipy.Spotify):
+def get_user_data(sp: spotipy.Spotify) -> dict:
     # Collect all user data and store it in a dictionnary to create a JSON file later
     userDataJson = {}
 
@@ -117,7 +117,7 @@ def main():
     spClient = setup_spotify_client()
 
     data = get_user_data(spClient)
-    json_data = json.dumps(data)
+    json_data = json.dumps(data, indent=4)
     print(json_data)
     return json_data
 
