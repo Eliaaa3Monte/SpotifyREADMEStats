@@ -23,7 +23,7 @@ Use the `/stats` endpoint to access the images API
 | `type`     | Select the stat to display (only one per query) | `artists`, `top_songs` or `last_albums` | `artists`      |
 | `range`    | Select the time range of selection              | `short_term` or `long_term`             | `short_term`   |
 
-You can also une the `/json` endpoint to access the raw Spotify data as JSON.
+You can also use the `/json` endpoint to access the raw Spotify data as JSON.
 
 ### Use examples
 
