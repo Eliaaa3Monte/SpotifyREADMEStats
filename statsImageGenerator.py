@@ -58,17 +58,17 @@ def create_spotify_infographic(
         num_columns = 3
         num_items = 3
         card_width = 150
-        card_height = 185  # Reduced height (no subtitle)
+        card_height = 210
     else:  # artists or songs
         num_columns = 5
         num_items = 5
         card_width = 130
-        card_height = 170  # Reduced height (no subtitle)
+        card_height = 190
 
     # Calculate SVG dimensions - COMPACT
     padding = 12
     card_spacing = 8
-    title_height = 55
+    title_height = 45  # Reduced since no subtitle
     total_width = (
         (card_width * num_columns) + (card_spacing * (num_columns - 1)) + (padding * 2)
     )
@@ -84,18 +84,18 @@ def create_spotify_infographic(
                 font-size: 22px; 
                 font-weight: 700; 
             }}
-            .subtitle {{
-                fill: #B3B3B3;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-                font-size: 11px;
-                font-weight: 400;
-            }}
             .card-title {{ 
                 fill: #FFFFFF; 
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
                 font-size: 11px; 
                 font-weight: 600;
                 line-height: 1.3;
+            }}
+            .card-subtitle {{ 
+                fill: #B3B3B3; 
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
+                font-size: 9px; 
+                font-weight: 400; 
             }}
         </style>
         <!-- Dark gradient background -->
@@ -108,7 +108,7 @@ def create_spotify_infographic(
             <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
             <stop offset="100%" style="stop-color:#1e1e1e;stop-opacity:1" />
         </linearGradient>
-        <!-- Green accent gradient for hover effect -->
+        <!-- Green accent gradient -->
         <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style="stop-color:#1DB954;stop-opacity:0.15" />
             <stop offset="100%" style="stop-color:#1ed760;stop-opacity:0.05" />
@@ -142,42 +142,36 @@ def create_spotify_infographic(
     <rect width="{total_width}" height="{total_height}" fill="url(#bgGradient)"/>
     """
 
-    # Title section
+    # Title section (NO SUBTITLE IN HEADER)
     svg_content = ""
 
     if section_type == "artists":
         if time_range == "short_term":
             title = "My Recent Top Artists"
-            subtitle = "Last 4 weeks"
             data = stats_data.get("top_artists", {}).get("short_term", {})
         else:
             title = "My All-Time Top Artists"
-            subtitle = "All time favorites"
             data = stats_data.get("top_artists", {}).get("long_term", {})
 
     elif section_type == "top_songs":
         if time_range == "short_term":
             title = "My Recent Top Songs"
-            subtitle = "Last 4 weeks"
             data = stats_data.get("top_songs", {}).get("short_term", {})
         else:
             title = "My All-Time Top Songs"
-            subtitle = "All time favorites"
             data = stats_data.get("top_songs", {}).get("long_term", {})
 
     elif section_type == "last_albums":
         title = "Recently Saved Albums"
-        subtitle = "Latest additions"
-        data = stats_data.get("last_listened_to_albums", {})
+        data = stats_data.get("last_albums", {})
     else:
         return None
 
-    # Add title with glow
+    # Add title with glow (NO SUBTITLE)
     svg_content += f"""
     <g filter="url(#glow)">
         <text x="{padding}" y="32" class="title">{escape_xml(title)}</text>
     </g>
-    <text x="{padding}" y="47" class="subtitle">{escape_xml(subtitle)}</text>
     """
 
     # Create cards
@@ -196,6 +190,14 @@ def create_spotify_infographic(
         # Wrap text instead of truncating
         max_chars = 18 if section_type == "last_albums" else 16
         name_lines = wrap_text(name, max_chars)
+
+        # Get subtitle (artist name or genre)
+        if section_type == "artists":
+            subtitle_text = item.get("genre", "Unknown")
+            subtitle_lines = wrap_text(subtitle_text, max_chars)
+        else:
+            artist_name = item.get("artist", "Unknown")
+            subtitle_lines = wrap_text(artist_name, max_chars)
 
         # Image dimensions
         img_size = card_width - 16
@@ -244,16 +246,25 @@ def create_spotify_infographic(
               class="card-title" text-anchor="middle" opacity="0.3" font-size="24">♪</text>
         """
 
-        # Text section with wrapped text (NO SUBTITLE)
+        # Text section with wrapped text
         text_y = y + img_y_offset + img_size + 18
 
-        # Title only (up to 2 lines, centered in remaining space)
+        # Title (up to 2 lines)
         for line_idx, line in enumerate(name_lines):
-            # Escape XML special characters
             escaped_line = escape_xml(line)
             svg_content += f"""
         <text x="{x + card_width/2}" y="{text_y + (line_idx * 13)}" class="card-title" text-anchor="middle">
             {escaped_line}
+        </text>
+        """
+
+        # Subtitle (artist/genre - 1 line)
+        subtitle_y = text_y + (len(name_lines) * 13) + 10
+        if subtitle_lines:
+            escaped_subtitle = escape_xml(subtitle_lines[0])
+            svg_content += f"""
+        <text x="{x + card_width/2}" y="{subtitle_y}" class="card-subtitle" text-anchor="middle">
+            {escaped_subtitle}
         </text>
         """
 
