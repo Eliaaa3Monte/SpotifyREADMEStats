@@ -1,6 +1,6 @@
-# SpotifyStats
-
 <div align="center">
+  <img src="images/Spotify.svg", height=80px >
+  <h1> SpotifyStats</h1>
 
 <a href="">![Python](https://img.shields.io/badge/python-3.14-blue.svg)</a>
 <a href="">![Flask](https://img.shields.io/badge/flask-3.1.0-green.svg)</a>
@@ -162,8 +162,7 @@ python -m dotenv run -- python -m statsCollector
 Or run the Flask API locally:
 
 ```bash
-cd api
-python -m dotenv run -- python index.py
+python -m dotenv run -- python api/index.py
 ```
 
 Running Tests
